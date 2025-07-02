@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    container_name: imersao-alura-dia2
+    ports:
+      - "8000:8000"
+    volumes:
+      # Monta o diretório atual no container em /app
+      # Isso permite o hot-reloading quando você altera o código.
+      # O arquivo do banco de dados sqlite também será criado no diretório do seu projeto.
+      - .:/app
+    command: uvicorn app:app --host 0.0.0.0 --port 8000 --reload
